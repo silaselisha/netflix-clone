@@ -1,20 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from './axios'
+import requests from './requests'
 import './Banner.css'
 
 const Banner = () => {
+  const [movie, setMovie] = useState([])
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
     }
 
+    useEffect(() => {
+      const fetchData = async () => {
+        const request = await axios.get(requests.fetchNetflixOriginals)
+
+        let index = Math.floor(Math.random() * request.data.results.length - 1)
+     
+        setMovie(request.data.results[index])
+        return request
+      }
+
+      fetchData()
+    }, [])
+
   return (
-    <header className='banner' style={{ backgroundImage: `url('https://images.squarespace-cdn.com/content/v1/5efce5920d28887981c5bd9b/1620325755456-HV7G0OW366L9OEPUPR2C/Lupin+Part+2+banner.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center center'}}>
+    <header className='banner' style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`, backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'none'}}>
         <div className='banner__content'>
-            <h1 className='banner__title'>Movie Name</h1>
+            <h1 className='banner__title'>{movie?.name || movie?.title || movie?.original_name}</h1>
             <div className='banner__buttons'>
                 <button className='banner__button'>Play</button>
                 <button className='banner__button'>My List</button>
             </div>
-              <h1 className='banner__description'>{truncate('This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.This is the test description.', 150)}</h1>
+              <h1 className='banner__description'>{truncate(movie?.overview, 150)}</h1>
         </div>
         <div className='banner--fadeBottom' />
     </header>

@@ -8,7 +8,6 @@ const HomeScreen = () => {
     <div className='homeScreen'>
         {/* Nav */}
         <Nav />
-        {/* Banner */}
         <Banner />
         {/* Row */}
     </div>
