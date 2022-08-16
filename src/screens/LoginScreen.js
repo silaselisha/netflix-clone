@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import './LoginScreen.css'
 import SignupScreen from './SignupScreen'
+
+import './LoginScreen.css'
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false)
@@ -10,7 +11,7 @@ const LoginScreen = () => {
         <div className='loginScreen__background'>
             <img className='loginScreen__logo' src={`https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png`} alt='netflix logo' />
              
-            <button className='loginScreen__button' onClick={() => setSignIn(true)}>Sign In</button>
+            {!signIn && (<button className='loginScreen__button' onClick={() => setSignIn(true)}>Sign In</button>)}
             <div className='loginScreen__gradient' />
         </div>
         <div className='loginScreen__body'>
