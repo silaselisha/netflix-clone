@@ -1,0 +1,31 @@
+.plan {
+    width: 100%;
+    margin-top: 4%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.plan__title > h4 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.plan__title > span {
+    font-size: .8rem;
+    font-weight: 400;
+}
+
+.plan__button {
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #e50914;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 1vw 2vw;
+    border-radius: 3px;
+}
+
+.plan__button-gray {
+    background-color: gray;
+}

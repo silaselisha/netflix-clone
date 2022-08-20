@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '../firebase'
 import './SignupScreen.css'
 

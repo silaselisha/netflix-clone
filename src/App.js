@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login, logout, selectUser } from './features/user/userSlice'
 
 import './App.css'
+import ProfileScreen from './screens/ProfileScreen'
 
 function App() {
   const user = useSelector(selectUser)
@@ -19,18 +20,21 @@ function App() {
           email: user.email
         }))
       }else {
-        dispatch(logout)
+        dispatch(logout())
       }
     })
 
     return unsubscribe
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="app">
       {!user ? <LoginScreen /> : (
         <Router>
           <Switch>
+            <Route path={'/profile'}>
+              <ProfileScreen />
+            </Route>
             <Route path={'/'} exact>
               <HomeScreen />
             </Route>
